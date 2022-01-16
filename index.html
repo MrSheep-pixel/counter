@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Counter</title>
+
+    <style>
+
+        body {
+            background-color: rgb(44, 47, 51);
+        }
+
+        @font-face {
+              font-family: 'minecraftregular';
+              src: url('minecraftregular-bmg3-webfont.woff2') format('woff2'),
+              url('minecraftregular-bmg3-webfont.woff') format('woff');
+              font-weight: normal;
+              font-style: normal;
+            }
+
+        h1.title {
+            color: rgb(190,190,190); 
+            text-align:center;
+            font-family: minecraftregular;
+            text-shadow: 2px 2px 8px rgb(0, 0, 0);
+            font-size: 40;
+            padding-top: 200px;
+        }
+
+        h1.counter {
+            font-family: minecraftregular;
+            color: rgb(190,190,190);
+            text-align: center;
+            text-shadow: 2px 2px 8px rgb(0, 0, 0);
+            font-size: 60px;
+
+        }
+
+        button.clicker {
+            font-size: 40px;
+            font-family: minecraftregular;
+            cursor: pointer;
+            width: 200px;
+            height: 100px;
+            background-color: rgb(0,100,50);
+            color: rgb(0,50,25);
+            position: absolute;
+            left: 450px
+        }
+
+        button.reset {
+            font-size: 40px;
+            cursor: pointer;
+            width: 200px;
+            height: 100px;
+            background-color: rgb(100,25,25);
+            font-family: minecraftregular;
+            color: rgb(50,12.5,12.5);
+            position:absolute;
+            left: 108px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="title">Days since incedent</h1>
+    <h1 class="counter" id="counter">0</h1>
+
+    <button class="clicker" onclick="clicked();">+</button>
+    <button class="reset" onclick="reset();">-</button>
+
+    <script>
+
+        var score = 0
+        var score_2 = 0
+        var minus = new Audio('minus.mp3');
+        var plus1 = new Audio('plus1.ogg')
+        var plus2 = new Audio('plus2.ogg')
+
+        function clicked() {
+            score += 1 
+            score_2 += 1
+            document.getElementById('counter').innerHTML = score;
+            plus1.play()
+
+            if (score_2 == 5) {
+            plus2.play()
+            score_2 -= 5
+            }
+        }
+
+        function reset() {
+            score = 0
+            score_2 = 0
+            minus.play()
+            document.getElementById('counter').innerHTML = score;
+        }
+
+        
+
+    </script>
+
+</body>
+</html>
