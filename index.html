@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Counter</title>
+    <title id="tab">Counter</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
     <style>
 
@@ -44,7 +45,16 @@
             background-color: rgb(0,100,50);
             color: rgb(0,50,25);
             position: absolute;
-            left: 450px
+            left: 450px;
+            border: hidden;
+            box-shadow: 0px 8px rgb(0,50,25);
+            border-radius: 2px;
+
+        }
+
+        button.clicker:active {
+            box-shadow: 0px 0px;
+            transform: translateY(8px)
         }
 
         button.reset {
@@ -57,6 +67,14 @@
             color: rgb(50,12.5,12.5);
             position:absolute;
             left: 108px;
+            border: hidden;
+            box-shadow: 0px 8px rgb(50,12.5,12.5);
+            border-radius: 2px;
+        }
+
+        button.reset:active {
+            box-shadow: 0px 0px;
+            transform: translateY(8px);
         }
 
     </style>
@@ -72,27 +90,40 @@
 
         var score = 0
         var score_2 = 0
+        var score_3 = 0
         var minus = new Audio('minus.mp3');
         var plus1 = new Audio('plus1.ogg')
         var plus2 = new Audio('plus2.ogg')
+        var plus3 = new Audio('plus3.ogg')
 
         function clicked() {
             score += 1 
             score_2 += 1
+            score_3 += 1
             document.getElementById('counter').innerHTML = score;
+            document.getElementById('tab').innerHTML = "counter " + score;
             plus1.play()
 
-            if (score_2 == 5) {
+            if (score_3 != 10 && score_2 == 5) {
             plus2.play()
             score_2 -= 5
+            }
+            
+
+            if (score_3 == 10) {
+                plus3.play()
+                score_3 -= 10
+                score_2 -= 5
             }
         }
 
         function reset() {
             score = 0
             score_2 = 0
+            score_3 = 0
             minus.play()
             document.getElementById('counter').innerHTML = score;
+            document.getElementById('tab').innerHTML = "counter " + score;
         }
 
         
